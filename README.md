@@ -1,1 +1,1 @@
-# PythonBackend
+## Репозиторий для домашних заданий по курсу Python Backend
