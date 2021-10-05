@@ -1,0 +1,47 @@
+[
+  {
+    "id": "1",
+    "name": "Masha",
+    "product": {
+      "name": "apple",
+      "calories": "47",
+      "description": "Yummy!"
+    }
+  },
+  {
+    "id": "2",
+    "name": "Anya",
+    "product": {
+      "name": "banana",
+      "calories": "89",
+      "description": "Yummy!"
+    }
+  },
+  {
+    "id": "3",
+    "name": "Nastya",
+    "product": {
+      "name": "strawberry",
+      "calories": "33",
+      "description": "Yummy!"
+    }
+  },
+  {
+    "id": "4",
+    "name": "Yulia",
+    "product": {
+      "name": "grapes",
+      "calories": "67",
+      "description": "Yummy!"
+    }
+  },
+  {
+    "id": "5",
+    "name": "Dasha",
+    "product": {
+      "name": "orange",
+      "calories": "47",
+      "description": "Yummy!"
+    }
+  }
+]

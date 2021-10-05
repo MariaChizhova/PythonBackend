@@ -2,9 +2,16 @@ from fastapi import FastAPI
 from app.product_model import Product
 from app.calculations import Products
 import datetime
+from graphene import Schema
+from fastapi import FastAPI
+from starlette.graphql import GraphQLApp
+from app.query import Query
+from graphql.execution.executors.asyncio import AsyncioExecutor
 
 app = FastAPI()
 products = Products()
+
+app.add_route("/graphql", GraphQLApp(schema=Schema(query=Query), executor_class=AsyncioExecutor))
 
 
 @app.get("/")
