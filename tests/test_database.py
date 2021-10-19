@@ -1,5 +1,5 @@
-from app import requests, models
-from app.database import SessionLocal, engine
+from app.SQLite import models, requests
+from app.SQLite.database import SessionLocal, engine
 
 models.Base.metadata.create_all(bind=engine)
 

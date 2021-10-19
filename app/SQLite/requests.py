@@ -1,4 +1,4 @@
-from app import models
+from app.SQLite import models
 from sqlalchemy.orm import Session
 
 

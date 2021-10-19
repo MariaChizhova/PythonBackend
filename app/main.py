@@ -1,14 +1,17 @@
-from app.product_model import Product
+from app.models.product_model import Product
 from app.calculations import Products
 import datetime
 from graphene import Schema
-from fastapi import FastAPI, HTTPException, Response, Depends
+from fastapi import FastAPI, HTTPException, Response, Depends, Body, status
 from starlette.graphql import GraphQLApp
 from app.query import Query
 from graphql.execution.executors.asyncio import AsyncioExecutor
-from app.database import SessionLocal, engine
+from app.SQLite.database import SessionLocal, engine
 from sqlalchemy.orm import Session
-from app import requests, models
+from app.SQLite import models, requests
+from fastapi.responses import JSONResponse
+from fastapi.encoders import jsonable_encoder
+from app.MongoDB.database import UserModel, users_collection
 
 app = FastAPI()
 products = Products()
@@ -23,6 +26,14 @@ def get_db():
         yield db
     finally:
         db.close()
+
+
+@app.post("/add_user_mongo", response_description="Add new user", response_model=UserModel)
+async def add_user(user: UserModel = Body(...)):
+    user = jsonable_encoder(user)
+    new_user = await users_collection.insert_one(user)
+    created_user = await users_collection.find_one({"_id": new_user.inserted_id})
+    return JSONResponse(status_code=status.HTTP_201_CREATED, content=created_user)
 
 
 @app.post('/add_user/{user}')

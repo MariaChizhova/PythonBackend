@@ -1,5 +1,5 @@
 from collections import defaultdict
-from app.product_model import Product
+from app.models.product_model import Product
 from fastapi import HTTPException
 
 

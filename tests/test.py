@@ -1,5 +1,5 @@
 import pytest
-from app.product_model import Product
+from app.models.product_model import Product
 from app.calculations import Products
 import datetime
 
