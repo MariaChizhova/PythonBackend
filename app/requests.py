@@ -2,8 +2,8 @@ from app import models
 from sqlalchemy.orm import Session
 
 
-def add_user(db: Session, email: str, password: str):
-    user = models.User(email=email, password=password)
+def add_user(db: Session, name: str, email: str, password: str):
+    user = models.User(name=name, email=email, password=password)
     db.add(user)
     db.commit()
     db.refresh(user)

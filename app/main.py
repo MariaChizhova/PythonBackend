@@ -26,11 +26,11 @@ def get_db():
 
 
 @app.post('/add_user/{user}')
-async def add_user(email: str, password: str, response: Response, db: Session = Depends(get_db)):
-    if requests.get_user_by_email(db, email):
+async def add_user(name: str, email: str, password: str, response: Response, db: Session = Depends(get_db)):
+    if requests.get_user_by_email(db=db, email=email):
         response.status_code = 409
         return HTTPException(status_code=409, detail="User with this email exists")
-    requests.add_user(db=db, email=email, password=password)
+    requests.add_user(db=db, name=name, email=email, password=password)
     return True
 
 
@@ -45,7 +45,7 @@ async def get_users_by_id(user_id: int, db: Session = Depends(get_db)):
 
 
 @app.get('/get_user_by_email/{email}')
-async def get_users(email: str, db: Session = Depends(get_db)):
+async def get_users_by_email(email: str, db: Session = Depends(get_db)):
     return requests.get_user_by_email(email=email, db=db)
 
 
